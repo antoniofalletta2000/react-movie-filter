@@ -10,34 +10,50 @@ export default function AppMain() {
         { title: 'Pulp Fiction', genre: 'Thriller' },
     ]
 
-    const [selectGenre, setSelectGenre]=useState("intera lista")
-    const [originalArray, setOriginalArray]=useState(films)
-
-    useEffect(()=>{
-        if(selectGenre==="intera lista"){
+    const [selectGenre, setSelectGenre] = useState("intera lista")
+    const [originalArray, setOriginalArray] = useState(films)
+    const [typeTitle, setTypeTitle] = useState("")
+    useEffect(() => {
+        if (selectGenre === "intera lista") {
             setOriginalArray(films)
-        }else{
-            const filteredFilms= films.filter(film=> film.genre===selectGenre)
+        } else {
+            const filteredFilms = films.filter(film => film.genre === selectGenre)
             setOriginalArray(filteredFilms)
         }
-    },[selectGenre])
+    }, [selectGenre])
 
+    useEffect(() => {
+        if (typeTitle === "") {
+            setOriginalArray(films)
+        } else {
+            const filterFilmsByTitle = films.filter(film => film.title.toLocaleLowerCase().includes(typeTitle.toLocaleLowerCase()))
+            setOriginalArray(filterFilmsByTitle)
+        }
+    })
     return (
         <>
-            <select value={selectGenre} onChange={(e)=> setSelectGenre(e.target.value)} class="form-select" aria-label="Default select example">
-                <option selected value="intera lista">Che genere di film vuoi vedere?</option>
-                <option value="Fantascienza">Fantascienza</option>
-                <option value="Thriller">Thriller</option>
-                <option value="Romantico">Romantico</option>
-                <option value="Azione">Azione</option>
-            </select>
-            <ul>
-                {
-                    originalArray.map((film, index) => (
-                        <li key={index}>TITOLO:{film.title} GENERE:{film.genre}</li>
-                    ))
-                }
-            </ul>
+            <div className="container mt-5">
+                <div className="d-flex align-items-center justify-content-around gap-4 pb-5">
+                    <input type="text" value={typeTitle} onChange={(e) => setTypeTitle(e.target.value)} />
+                    <select value={selectGenre} onChange={(e) => setSelectGenre(e.target.value)} class="form-select" aria-label="Default select example">
+                        <option selected value="intera lista">Che genere di film vuoi vedere?</option>
+                        <option value="Fantascienza">Fantascienza</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Romantico">Romantico</option>
+                        <option value="Azione">Azione</option>
+                    </select>
+                    
+                </div>
+
+                <ul className="d-flex gap-2">
+                    {
+                        originalArray.map((film, index) => (
+                            <li key={index}>TITOLO:{film.title} GENERE:{film.genre}</li>
+                        ))
+                    }
+                </ul>
+            </div>
+
 
         </>
     )
