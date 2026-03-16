@@ -29,7 +29,7 @@ export default function AppMain() {
             const filterFilmsByTitle = films.filter(film => film.title.toLocaleLowerCase().includes(typeTitle.toLocaleLowerCase()))
             setOriginalArray(filterFilmsByTitle)
         }
-    })
+    },[typeTitle] )
     return (
         <>
             <div className="container mt-5">
@@ -45,10 +45,10 @@ export default function AppMain() {
                     
                 </div>
 
-                <ul className="d-flex gap-2">
+                <ul >
                     {
                         originalArray.map((film, index) => (
-                            <li key={index}>TITOLO:{film.title} GENERE:{film.genre}</li>
+                            <li className="p-3" key={index}>TITOLO:{film.title} GENERE:{film.genre}</li>
                         ))
                     }
                 </ul>
