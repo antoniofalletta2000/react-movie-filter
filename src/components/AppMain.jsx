@@ -39,8 +39,8 @@ export default function AppMain() {
             <div className="container mt-5">
                 <div className="row row-cols-1 row-cols-md-2 d-flex align-items-center justify-content-around pb-5">
                     <div className="col d-flex gap-3">
-                        <input id="inputTitle" type="text" value={typeTitle} onChange={(e) => setTypeTitle(e.target.value)} />
-                        <select value={selectGenre} onChange={(e) => setSelectGenre(e.target.value)} class="form-select" aria-label="Default select example">
+                        <input id="inputTitle" className="border border-danger border-3" type="text" value={typeTitle} onChange={(e) => setTypeTitle(e.target.value)} />
+                        <select value={selectGenre} onChange={(e) => setSelectGenre(e.target.value)} className="form-select border border-danger border-3" aria-label="Default select example">
                             <option selected value="intera lista">Che genere di film vuoi vedere?</option>
                             <option value="Fantascienza">Fantascienza</option>
                             <option value="Thriller">Thriller</option>
@@ -55,9 +55,9 @@ export default function AppMain() {
                         originalArray.map((film, index) => (
                             <li key={index}>
                                 <div className="card">
-                                    <div className="d-flex align-items-center justify-content-around">
-                                        <h4>{film.title}</h4>
-                                        <span>{film.genre}</span>
+                                    <div className="d-flex align-items-center justify-content-around p-1">
+                                        <h4 className="text-white">{film.title}</h4>
+                                        <span className="text-white">{film.genre}</span>
                                     </div>
                                 </div>
 

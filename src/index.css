@@ -1,9 +1,19 @@
 @import url('bootstrap');
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .list{
   list-style: none;
 }
 
 #inputTitle{
   width: 100%;
+}
+
+.card{
+  background-color: rgba(234, 5, 5, 0.81);
 }
