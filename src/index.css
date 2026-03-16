@@ -1,1 +1,9 @@
 @import url('bootstrap');
+
+.list{
+  list-style: none;
+}
+
+#inputTitle{
+  width: 100%;
+}
