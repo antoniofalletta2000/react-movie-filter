@@ -10,13 +10,16 @@ export default function AppMain() {
         { title: 'Pulp Fiction', genre: 'Thriller' },
     ]
 
+    const [selectGenre, setSelectGenre]=useState("")
+
     return (
         <>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <select value={selectGenre} onChange={(e)=> setSelectGenre(e.target.value)} class="form-select" aria-label="Default select example">
+                <option selected>Che genere di film vuoi vedere?</option>
+                <option value="Fantascienza">Fantascienza</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Romantico">Romantico</option>
+                <option value="Azione">Azione</option>
             </select>
             <ul>
                 {
