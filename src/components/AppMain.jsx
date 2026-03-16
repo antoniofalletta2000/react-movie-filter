@@ -19,23 +19,16 @@ export default function AppMain() {
     const [addFilm, setAddFilm] = useState("")
     const [addGenre, setAddGenre] = useState("")
 
-    useEffect(() => {
-        if (selectGenre === "") {
-            setOriginalArray(films)
-        } else {
-            const filteredFilms = films.filter(film => film.genre === selectGenre)
-            setOriginalArray(filteredFilms)
+    useEffect(()=>{
+        let filteredFilms= films
+        if(selectGenre !== ""){
+            filteredFilms=filteredFilms.filter(film=> film.genre===selectGenre)
         }
-    }, [selectGenre])
-
-    useEffect(() => {
-        if (typeTitle === "") {
-            setOriginalArray(films)
-        } else {
-            const filterFilmsByTitle = films.filter(film => film.title.toLocaleLowerCase().includes(typeTitle.toLocaleLowerCase()))
-            setOriginalArray(filterFilmsByTitle)
+        if(typeTitle !== ""){
+            filteredFilms=filteredFilms.filter(film=>film.title.toLowerCase().includes(typeTitle.toLowerCase()))
         }
-    }, [typeTitle])
+        setOriginalArray(filteredFilms)
+    },[selectGenre,typeTitle])
 
     function handleSubmit(e) {
         e.preventDefault()
